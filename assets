@@ -1,0 +1,869 @@
+*******************Online Button on small device**********************
+
+<style type="text/css">
+.feedback1 {
+background-color: #e31e27 !important;
+  bottom: -2px;
+  width: 100%;
+  position: fixed;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  z-index: 99999999;
+  border: 1px solid #fff;
+  height: 40px;
+  letter-spacing: 2px;
+  left: 0;
+  font-weight: 800;
+  color: #fff;
+}
+.feedback1 {
+display: none;
+}
+@media (max-width: 767px) {
+.feedback1 {
+  display: block;
+}
+}
+</style>
+<a href="#" target="_blank" class="btn btn-primary feedback1">ORDER ONLINE</a>
+
+*********************************automatically run js function on load after some time*******************************
+
+<script>
+      $(document).ready(function(){
+        setTimeout(function(){
+            scrollMostTop()
+        }, 3000);
+      });
+
+          function scrollMostTop(){
+          window.scrollTo(0,0);
+        $('.class').click();
+    }
+  </script>
+
+
+*************************MOBILE REPOnsive MENU**************************************
+--------------------------CSS----------------------------
+
+*{
+    padding: 0;
+    margin: 0;
+  }
+  .mob-header {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+.mob-header .menu-list {
+    width: 50%;
+    position: absolute;
+    height: 0vh;
+    background-color: #ddd;
+    top: 0%;
+    left: 17%;
+    transform: translate(-50%, 0%);
+    display: grid;
+    align-content: center;
+    transition: 1s
+    }
+.mob-header .active{
+  height: 100vh;
+}
+.mob-header .menu-list .main-list {
+    transition: 0.5s;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    text-align: center;
+
+}
+.mob-header .menu-list.active .main-list{
+    transition-delay: 0.5s;
+    transform: translate(-50%, -50%) scale(1);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.mob-header .menu-list .main-list li {
+    list-style: none;
+    margin: 20px 5px;
+}
+.mob-header .menu-list .main-list li a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+}
+.mob-header .toogle-btn {
+    text-align: -webkit-right;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, 0%);
+    display: none;
+}
+.mob-header .toogle-btn span {
+    height: 2px;
+    width: 20px;
+    background-color: #000;
+    display: block;
+    margin: 5px;
+}
+
+@media only screen and (max-width: 425px){
+  .mob-header .toogle-btn{
+    display: block;
+  }
+  .mob-header .active {
+    left: 26%;
+}
+.mob-header .menu-list {
+    width: 70%;
+    left: 26%;
+    }
+}
+
+------------------------------CSS END-------------------------------
+
+------------------------------HTML--------------------------------
+<div class="mob-header">
+    <div class="menu-list">
+      <ul class="main-list">
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Gallery</a></li>
+        <li><a href="">FAQ's</a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="toogle-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  --------------------------HTML END------------------------
+
+  
+  -------------------------JQUERY-------------------------
+
+  <script>
+    $(document).ready(function(){
+      $('.toogle-btn').click(function(){
+        $('.mob-header .menu-list').toggleClass('active');
+        $('.mob-header .menu-list .main-list').toggleClass('active');
+      });
+    });
+  </script>
+
+  -------------------------JQery End ---------------------
+
+
+*********************** Callback Function/Copy text thought copy btn***************************
+
+<script>
+    var copybtn = document.getElementById('copybtn');
+    var copylink = document.getElementById('copylink');
+    
+    copybtn.onclick = function(){
+        navigator.clipboard.writeText(copylink.innerHTML);
+        copybtn.innerHTML = "Copied";
+        setTimeout(function(){
+           copybtn.innerHTML = "Copy link";  
+        }, 2000);
+    }
+    
+</script>
+
+<script>
+function submitForm(){
+document.getElementById("process").innerHTML = "Processing...";
+setTimeout(function(){
+process.innerHTML = "Submitted"
+}, 3000);
+}
+
+</script>
+
+  ******************************Set interval*******************************
+
+  <script>
+        $(document).ready(function(){
+            setInterval(function(){
+                $('.next-btn').click();
+            }, 5000);
+        });
+  </script>
+
+
+*****************ADD DIV AND ATTRRIBUTES THROUGH JQuery "PREPAND AND BEFORE"*************************
+
+   <script>
+        if(window.location.href == 'https://starbarsd.com/events/'){
+            $('.header').before("<div class='banner-event'></div>");
+            $('.banner-event').prepend("<h2 class='text-heading-center'>Events</h2>");
+            }
+ </script>
+
+*******************NAV ACTIVE LINK BASED ON URL IS ADDED THORUGH JAVASCRIPT******************
+
+ <script>
+        const currentLocation = location.href;
+        const menuItem = document.querySelectorAll('a');
+        const menuLength = menuItem.length;
+        for(i = 0; i < menuLength; i++){
+            if(menuItem[i].href === currentLocation){
+                menuItem[i].className = "active";
+            }
+        } 
+    </script>
+
+********Add javascript to specific Wordpress page************************
+
+----GO TO FUNCTION.PHP FILE
+
+
+function load_js_assets(){
+  if (is_page( ID )){
+  wp_enqueue_script('my-js', 'PATH TO JS FILE', array(jquery), '', 'false');
+  }
+}
+add_action('wp_wnqueue_script', 'load_js_assets');
+
+
+
+***************************Sticky Sidebar*********************************
+
+Go to Google Chorome and type "STICKIT JQUERY" and the very first link have of "GITHUB"
+to Click which is "emn178/jquery-stickit - GitHub"
+
+<script>
+    
+    $(document).ready(function(){
+       $('.sticky-side-bar').stickit([{
+          screenMinWidth: 1024,         // apply if width >= 1024
+          top: 60                   
+        }, {
+          screenMinWidth: 768,    // apply if width >= 768 && width <= 1023
+          screenMaxWidth: 1023,
+          top: 90
+        }, {
+          screenMaxWidth: 767,    // apply if width <= 767
+          top: 90
+        }]);
+    });
+</script>
+
+****************************************************************************
+
+
+**************contact form processing and validation************************
+
+
+<?php 
+
+if( isset($_POST['contactForm']) && $_POST['contactForm'] == 1 )   {
+    
+    $FirstName = $_POST['firstname'];
+    $LastName = $_POST['lastname'];
+    $email = $_POST['Email'];
+    $date = $_POST['date'];
+    $message = $_POST['message'];
+    
+    $reg_exUrl = "/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)/i";
+   if(preg_match($reg_exUrl, $message, $url_invalid)) {
+       echo "<script>alert('URLs are not allowed in message area.'); window.history.back();</script>";
+      die();
+   }
+   
+   if(strlen($message) != strlen(utf8_decode($message))) {
+        echo "<script>alert('Special characters are not allowed in message area.'); window.history.back();</script>";
+      die();
+    }
+    
+    $msg = "<p>You have received a new lead from <strong>Contact Us Form</strong>. Here are the details,</p>";
+    $msg .= "<ul>
+                    <li><strong>First Name: </strong>{$FirstName}</li>
+                    <li><strong>Last Name: </strong>{$LastName}</li>
+                    <li><strong>Email: </strong>{$email}</li>
+                    <li><strong>Date of Booking: </strong>{$date}</li>
+                </ul>";
+    $msg .= "<ul><li><strong>Message: </strong>{$message}</li></ul>";
+    $msg .= "<p>Best Regards, <br>Banzai Bar</p>";
+    
+    $subject = "Banzai Bar - Contact Form";
+    
+    $to = 'jreyes@oceanicenterprises.com, mlopez@oceanicenterprises.com';
+    
+    // Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    
+    $headers .= "From: Banzai Bar <noreply@banzaibar.com>";
+    
+    
+    if( mail($to, $subject, $msg, $headers) ){
+        header('location: http://banzaibar.com/');
+    }
+    
+}
+  
+?>
+*****************************************************************************
+
+
+****************************ADD DO SHORT CODE***********************
+
+function function_name(){
+  
+  //dynamic code
+
+  $message = "<h1>Hello Short Code</h1>";
+  return '$message';
+}
+
+//Now Register Short Code  ---> Represent as [MY_SHORTCODE_NAME] 
+//Now Register Short Code  ---> Represent as FRONTEND ---> <?php echo do_shortcode("[MY_SHORTCODE_NAME]");?>
+
+add_shortcode('shortcode name which is use to call say MY_SHORTCODE', 'name of function which is exactly same as above without round bracket');
+
+***********************Banner Video*****************************
+
+ <video width="100%" height="auto"
+ autoplay="autoplay" loop muted style="-webkit-filter: brightness(25%); /* Safari */
+   filter: brightness(25%);      position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: 1;
+     object-fit: cover;
+ " >  <source
+ src="https://v.ftcdn.net/01/51/24/26/700_F_151242645_CnqoQPS8CYYod3JMqp3dvTCovCcK2zw4_ST.mp4" type="video/mp4">
+
+  Your browser does not support the video tag.
+
+ </video>
+
+ --------------------------------------OR-------------------------------
+
+  <video width="100%" height="100%" loop muted autoplay>
+                  <source src="video/vid-1.mp4" type="video/mp4">
+               </video>
+
+
+
+*******************Add Class to div depending on URL***********************
+
+<script>
+  if (window.location.href == 'http://specific-page.com'){
+    $('.existingClass').addClass('newClass');
+  };
+</script>
+
+
+******************************MODAL*************************************
+
+_________________________HTML___________________________
+
+  <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="img/margos-footer-dark-new.png" style="height:auto; width:150px; display:block; margin:0 auto;">
+                        </div>
+                        <div class="col-12">
+                            <h4 class="modal-title">Please select</h4>
+                        </div>
+                         
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row dp-flex">
+                            <div class="col-md-4 col-6 custom-border">
+                                <a href="https://bakery.cafemargos.com/" target="_blank">
+                                <div class="map-point">
+                                    <img class="img-fluid" src="img/bakery-icon.png" alt="">
+                                    <h6>BAKERY</h6>
+                                </div>
+                                </a>
+                            </div>
+                            <!--<div class="col-md-2 col-12"></div>-->
+                            <div class="col-md-4 col-6 custom-border">
+                               <a href="https://cafe.cafemargos.com/" target="_blank">
+                                <div class="map-point">
+                                    <img class="img-fluid" src="img/cafe-icon.png" alt="">
+                                    <h6>CAFE</h6>
+                                </div>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        <!-- / .modal -->
+
+        <a data-toggle="modal" data-target="#myModal" class="icon-button-rl btn-ex-small active rounded-0 w-100 bg-transparent hover-bg-color border border-color"><span class="abt">ORDER NOW</span>
+                                    </a>
+
+_______________________________CSS_________________________________
+
+  a {
+            cursor: pointer;
+        }
+        .modal-body{
+   padding: 1rem 2rem;
+}
+.modal-header{
+   padding: 1rem 0rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+h4.modal-title {
+   text-align: center;
+   width: 100%;
+}
+img.img-fluid {
+    width: 100%;
+}
+.map-point {
+    width: 100px;
+    margin: auto;
+    text-align: center;
+}
+.row.dp-flex {
+    display: flex;
+    justify-content: space-around;
+}
+.custom-border {
+    border: 1px solid #cecece;
+}
+
+
+
+****************************Slick Slider's Button **********************
+
+
+prevArrow: '<i class="fa fa-chevron-left slick-prev"></i>',
+  nextArrow: '<i class="fa fa-chevron-right slick-next"></i>',
+
+
+
+  --------button CSS-------
+
+  .service .inner-services .service-slider .slick-arrow{
+    background-color: #ffffff;
+    color: #000;
+    padding: 1.2rem;
+    border-radius: 2rem;
+}
+.service .inner-services .service-slider .slick-prev::before {
+    content: "\f104";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+   font-family: "Font Awesome 5 Free";
+}
+
+
+.service .inner-services .service-slider .slick-next::after {
+    content: "\f105";
+    font-family: 'Font Awesome 5 Free';
+    color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+************************** DROPDOWN MENU *******************************
+
+
+$(document).ready(function(){
+    $('.menu-item-has-children').append('<i class="fas fa-chevron-down"></i>');
+    });
+
+
+$(document).ready(function() {
+  $('.fa-chevron-down').on("click",function(){
+
+    $(this).prev(".sub-menu").toggle();
+    $(this).parent().siblings().find(".sub-menu").hide();
+    
+  });
+});
+
+
+*******************details Tabs**********************
+ Collapse/Expand
+
+ -----------------------<HTML>-----------------------
+
+ <details>
+<summary>Title</summary>
+<p>descriptions</p>
+ </details>
+
+ -----------------------<CSS>------------------------
+
+	 details[open] summary ~ * {
+	    animation: sweep .5s ease-in-out;
+	}
+
+	@keyframes sweep{
+	0% {
+	    opacity: 0;
+	    margin-top: -10px;
+	}
+	100% {
+	    opacity: 1;
+	    margin-top: 0px;
+	}
+	}
+
+
+-----------------------<JQuery>-----------------------
+
+ $(document).ready(function(){
+       $("details").click(function(event) {
+  $("details").not(this).removeAttr("open");
+});
+ });
+
+----------------------------------------------------------
+
+***************Side SCROLL**************
+
+--------CSS--------
+
+  ::-webkit-scrollbar {
+              width: 10px;
+            }
+            
+            /* Track */
+            ::-webkit-scrollbar-track {
+              background: #1f1f1f; 
+            }
+             
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #f8db1c;
+            }
+            
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #555; 
+            }
+
+------------------------------------------------------------- 
+
+********************************** PRE LOADER *********************************
+ <!-- preloader -->
+        <div class="loader-wrap">
+            <div class="preloader">
+                <div class="preloader-close">Preloader Close</div>
+                <div id="handle-preloader" class="handle-preloader">
+                    <div class="animation-preloader">
+                        <div class="spinner"></div>
+                        <div class="txt-loading">
+                            <span data-text-preloader="R" class="letters-loading">
+                                R
+                            </span>
+                            <span data-text-preloader="O" class="letters-loading">
+                                O
+                            </span>
+                            <span data-text-preloader="Y" class="letters-loading">
+                                Y
+                            </span>
+                            <span data-text-preloader="A" class="letters-loading">
+                                A
+                            </span>
+                            <span data-text-preloader="L" class="letters-loading">
+                                L
+                            </span>
+                            <span data-text-preloader="" class="letters-loading">
+                                 
+                            </span>
+                            
+                            <span data-text-preloader="R" class="letters-loading">
+                                 R
+                            </span>
+                            
+                            <span data-text-preloader="I" class="letters-loading">
+                                 I
+                            </span>
+                            
+                            <span data-text-preloader="C" class="letters-loading">
+                                 C
+                            </span>
+                            
+                            <span data-text-preloader="H" class="letters-loading">
+                                 H
+                            </span>
+                            
+                            <span data-text-preloader="" class="letters-loading">
+                                 
+                            </span>
+                            <br>
+                            <span data-text-preloader="B" class="letters-loading">
+                                 B
+                            </span>
+                            <span data-text-preloader="A" class="letters-loading">
+                                 A
+                            </span>
+                            <span data-text-preloader="K" class="letters-loading">
+                                 K
+                            </span>
+                            <span data-text-preloader="E" class="letters-loading">
+                                 E
+                            </span>
+                            <span data-text-preloader="R" class="letters-loading">
+                                 R
+                            </span>
+                            <span data-text-preloader="Y" class="letters-loading">
+                                 Y
+                            </span>
+                            
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
+
+******************************* RESET ALL CLICKS ******************************
+
+<script>
+            $(document).ready(function () {
+                $(".menu-item").click(function () {
+                    $(".phm-close").click();
+                });
+            });
+</script>
+
+
+-----------------------------------------------------------------
+
+************************** Swipe/Draggable Carousel Slider *********************
+
+************************** Bootstrap Carousel Slider ***************************
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="img/header_creative_agency.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/header_creative_agency.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/header_creative_agency.jpg" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+****************** Touchswipe JQuery *************************
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.9/jquery.touchSwipe.min.js"></script>
+OR
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
+<script>
+  $(".carousel").swipe({
+        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+            if (direction == 'left') $(this).carousel('next');
+            if (direction == 'right') $(this).carousel('prev');
+        },
+        allowPageScroll: "vertical" 
+    });
+</script>
+
+-----------------------------------------------------------------------------------
+
+
+*******************************FORM VALIDATION LINK ********************************
+
+https://codeconia.com/2021/01/12/contact-form-with-phpmail-for-your-website
+
+
+*************************Custom-filed ADD on a "GRAVITY_FORM"*************************************
+
+if (class_exists('GF_Field')) {
+	class FoodDelivery extends GF_Field {
+		public $type = 'food_delivery';
+ 
+		private $delivery_days = ['School Name and Location (Address, City, State)', 'Course of Study or Major', 'Graduate? Y or N', '# of Years Completed', 'Honors Received'];
+ 
+		public function get_form_editor_field_title() {
+			return esc_attr__('Food Delivery', 'txtdomain');
+		}
+ 
+		public function get_form_editor_button() {
+			return [
+				'group' => 'advanced_fields',
+				'text'  => $this->get_form_editor_field_title(),
+			];
+		}
+ 
+		public function get_form_editor_field_settings() {
+			return [
+				'label_setting',
+				'choices_setting',
+				'description_setting',
+				'rules_setting',
+				'error_message_setting',
+				'css_class_setting',
+				'conditional_logic_field_setting',
+			];
+		}
+ 
+		public function is_value_submission_array() {
+			return true;
+		}
+ 
+		public function get_field_input($form, $value = '', $entry = null) {
+			if ($this->is_form_editor()) {
+				return '';
+			}
+ 
+			$id = (int) $this->id;
+			
+			if ($this->is_entry_detail()) {
+				$table_value = maybe_unserialize($value);
+			} else {
+				$table_value = $this->translateValueArray($value);
+			}
+ 
+			$table = '<table class="delivery-table"><tbody><tr>';
+			$table .= '<th>' . __('Education', 'txtdomain') . '</th>';
+			foreach ($this->delivery_days as $day) {
+				$table .= '<th>' . $day . '</th>';
+			}
+			$table .= '</tr>';
+ 
+			foreach ($this->choices as $course) {
+				$table .= '<tr>';
+				$table .= '<td>' . $course['text'] . '</td>';
+				foreach ($this->delivery_days as $day) {
+					$table .= '<td><input type="text" name="input_' . $id . '[]" value="' . $table_value[$course['text']][$day] . '" /></td>';
+				}
+				$table .= '</tr>';
+			}
+ 
+			$table .= '</tbody></table>';
+ 
+			return $table;
+		}
+ 
+		private function translateValueArray($value) {
+			if (empty($value)) {
+				return [];
+			}
+			$table_value = [];
+			$counter = 0;
+			foreach ($this->choices as $course) {
+				foreach ($this->delivery_days as $day) {
+					$table_value[$course['text']][$day] = $value[$counter++];
+				}
+			}
+			return $table_value;
+		}
+ 
+		public function get_value_save_entry($value, $form, $input_name, $lead_id, $lead) {
+			if (empty($value)) {
+				$value = '';
+			} else {
+				$table_value = $this->translateValueArray($value);
+				$value = serialize($table_value);
+			}
+			return $value;
+		}
+ 
+		private function prettyListOutput($value) {
+			$str = '<ul>';
+			foreach ($value as $course => $days) {
+				$week = '';
+				foreach ($days as $day => $delivery_number) {
+					if (!empty($delivery_number)) {
+						$week .= '<li>' . $day . ': ' . $delivery_number . '</li>';
+					}
+				}
+				// Only add week if there were any requests at all
+				if (!empty($week)) {
+					$str .= '<li><h3>' . $course . '</h3><ul class="days">' . $week . '</ul></li>';
+				}
+			}
+			$str .= '</ul>';
+			return $str;
+		}
+ 
+		public function get_value_entry_list($value, $entry, $field_id, $columns, $form) {
+			return __('Enter details to see delivery details', 'txtdomain');
+		}
+ 
+		public function get_value_entry_detail($value, $currency = '', $use_text = false, $format = 'html', $media = 'screen') {
+			$value = maybe_unserialize($value);		
+			if (empty($value)) {
+				return $value;
+			}
+			$str = $this->prettyListOutput($value);
+			return $str;
+		}
+ 
+		public function get_value_merge_tag($value, $input_id, $entry, $form, $modifier, $raw_value, $url_encode, $esc_html, $format, $nl2br) {
+			return $this->prettyListOutput($value);
+		}
+ 
+		public function is_value_submission_empty($form_id) {
+			$value = rgpost('input_' . $this->id);
+			foreach ($value as $input) {
+				if (strlen(trim($input)) > 0) {
+					return false;
+				}
+			}
+			return true;
+		}
+	}
+	GF_Fields::register(new FoodDelivery());
+}
+
+********************************************************************************************
+        
+
+
+
+
